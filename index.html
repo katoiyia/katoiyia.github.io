@@ -10,12 +10,31 @@
   <header>
     <h1>Welcome to My web page</h1>
   </header>
+  
   <nav>
     <ul>
+       <li><a href="work.html">Work</a></li> <!-- Link to Work page -->
       <li><a href="#">Work</a></li>
       <li><a href="#">About</a></li>
-      <li><a href="#contact">Contact</a></li>
       <li><a href="about.html">About</a></li> <!-- Link to About page -->
     </ul>
   </nav>
-  <section>
+  <div class="lightbox-container" onclick="closeLightbox()">
+    <div class="lightbox-content">
+      <img src="https://search.app.goo.gl/14St6Ygstyle"="max-width: 80%; max-height: 80%;" />
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2024 My Theme Page. All Rights Reserved.</p>
+    <p>Contact: info@mythemepage.com | Phone: 123-456-7890</p>
+  </footer>
+  <script>
+    function openLightbox() {
+      document.querySelector('.lightbox-container').style.display = 'block';
+    }
+    function closeLightbox() {
+      document.querySelector('.lightbox-container').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
