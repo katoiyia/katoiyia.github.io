@@ -1,0 +1,10 @@
+<a href="about.html">About</a>
+<p> Link to About page where you find facts about me</p>
+<p></p>
+<a href="game.html">Game</a>
+<P> Link to game page</P>
+<style>
+  a {
+    color: purple;
+  }
+</style>
