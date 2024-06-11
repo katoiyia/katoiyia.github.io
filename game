@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tic Tac Toe</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color:darkgray;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      grid-gap: 10px;
+      border: 2px solid #ccc;
+      padding: 10px;
+      background-color: white;
+      border-radius: 5px;
+    }
+
+    .cell {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 4em;
+      cursor: pointer;
+    }
+
+    .cell:hover {
+      background-color: white;
+    }
+
+    .player-x {
+      color: blue;
+    }
+
+    .player-o {
+      color: purple;
+    }
+
+    #game-status {
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="cell" data-index="0"></div>
+    <div class="cell" data-index="1"></div>
+    <div class="cell" data-index="2"></div>
+    <div class="cell" data-index="3"></div>
+    <div class="cell" data-index="4"></div>
+    <div class="cell" data-index="5"></div>
+    <div class="cell" data-index="6"></div>
+    <div class="cell" data-index="7"></div>
+    <div class="cell" data-index="8"></div>
+  </div>
+
+  <div id="game-status">Game in progress</div>
+
+  <script>
+    const cells = document.querySelectorAll('.cell');
+    const gameStatus = document.getElementById('game-status');
+    let board = ['', '', '', '', '', '', '', '', ''];
+    let currentPlayer = 'X';
+    let gameActive = true;
+
+    cells.forEach(cell => {
+      cell.addEventListener('click', handleClick);
+    });
+
+    function handleClick(event) {
+      if (gameActive) {
+        const index = parseInt(event.target.dataset.index);
+        if (board[index] === '') {
+          board[index] = currentPlayer;
+          event.target.textContent = currentPlayer;
+          event.target.classList.add(`player-${currentPlayer.toLowerCase()}`);
+          checkGameStatus();
+          switchPlayer();
+        }
+      }
+      for (let i = 0; i < winningCombinations.length; i++) {
+        const [a, b, c] = winningCombinations[i];
+        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+          gameActive = false;
+          gameStatus.textContent = `${currentPlayer} wins!`;
+          return;
+        }
+      }
+
+      if (!board.includes('')) {
+        gameActive = false;
+        gameStatus.textContent = "It's a draw!";
+      }
+    }
+
+    function switchPlayer() {
+      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+      gameStatus.textContent = `Player ${currentPlayer}'s turn`;
+    }
+    function checkGameStatus() {
+    const winningCombinations = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8],
+      [0, 3, 6], [1, 4, 7], [2, 5, 8],
+      [0, 4, 8], [2, 4, [2, 4, 6]
+    ];
+  </script>
+</body>
+</html>
